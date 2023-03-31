@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <a href="{{ route('employee.index') }}" class="m-2 btn btn-rounded btn-success waves-effect waves-light"><i
-            class="bx bx-plus font-size-16 me-2  align-middle"></i>All Employee</a>
+    <a href="{{ route('manager.index') }}" class="m-2 btn btn-rounded btn-success waves-effect waves-light"><i
+            class="bx bx-plus font-size-16 me-2  align-middle"></i>All managers</a>
 
 
 
@@ -26,7 +26,7 @@
                                     <div class="col-6">
                                         <h6>name</h6>
                                         <p class="text-muted">
-                                            @foreach ($employee as $item)
+                                            @foreach ($manager as $item)
                                                 {{ $item->name }}
                                             @endforeach
                                         </p>
@@ -35,7 +35,7 @@
                                     <div class="col-6">
                                         <h6>age</h6>
                                         <p class="text-muted">
-                                            @foreach ($employee as $item)
+                                            @foreach ($manager as $item)
                                                 {{ $item->age }}
                                             @endforeach
                                         </p>
@@ -44,17 +44,8 @@
                                     <div class="col-6">
                                         <h6>salary</h6>
                                         <p class="text-muted">
-                                            @foreach ($employee as $item)
+                                            @foreach ($manager as $item)
                                                 {{ $item->salary }}
-                                            @endforeach
-                                        </p>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h6>job title</h6>
-                                        <p class="text-muted">
-                                            @foreach ($employee as $item)
-                                                {{ $item->job_title }}
                                             @endforeach
                                         </p>
                                     </div>
@@ -62,17 +53,8 @@
                                     <div class="col-6">
                                         <h6>hired date</h6>
                                         <p class="text-muted">
-                                            @foreach ($employee as $item)
+                                            @foreach ($manager as $item)
                                                 {{ $item->hired_date }}
-                                            @endforeach
-                                        </p>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h6>managers</h6>
-                                        <p class="text-muted">
-                                            @foreach ($employee as $item)
-                                                {{ $item->managers }}
                                             @endforeach
                                         </p>
                                     </div>

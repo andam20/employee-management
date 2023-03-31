@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <a href="{{ route('employee.index') }}" class="m-2 btn btn-rounded btn-success waves-effect waves-light"><i
-            class="bx bx-plus font-size-16 me-2  align-middle"></i>All Employee</a>
+    <a href="{{ route('founder.index') }}" class="m-2 btn btn-rounded btn-success waves-effect waves-light"><i
+            class="bx bx-plus font-size-16 me-2  align-middle"></i>All Founder</a>
 
 
 
@@ -46,33 +46,6 @@
                                         <p class="text-muted">
                                             @foreach ($employee as $item)
                                                 {{ $item->salary }}
-                                            @endforeach
-                                        </p>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h6>job title</h6>
-                                        <p class="text-muted">
-                                            @foreach ($employee as $item)
-                                                {{ $item->job_title }}
-                                            @endforeach
-                                        </p>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h6>hired date</h6>
-                                        <p class="text-muted">
-                                            @foreach ($employee as $item)
-                                                {{ $item->hired_date }}
-                                            @endforeach
-                                        </p>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <h6>managers</h6>
-                                        <p class="text-muted">
-                                            @foreach ($employee as $item)
-                                                {{ $item->managers }}
                                             @endforeach
                                         </p>
                                     </div>
