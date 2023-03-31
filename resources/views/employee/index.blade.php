@@ -8,6 +8,9 @@
     <a href="{{ route('employee.create') }}" class="m-2 btn btn-rounded btn-success waves-effect waves-light"><i
             class="bx bx-plus font-size-16 me-2  align-middle"></i>Add Employee</a>
 
+    <a href="{{ route('employeeExport') }}"> <button class="btn btn-secondary buttons-excel buttons-html5"
+            tabindex="0" aria-controls="example1" type="button"><span>Export</span></button></a>
+
     <table class="table mt-2">
         <thead class="thead-light">
             <tr class="bg-secondary">

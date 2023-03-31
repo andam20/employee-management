@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EmployeeExport as ExportsEmployeeExport;
 use App\Http\Requests\EmployeeExport;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
@@ -112,8 +113,8 @@ class EmployeeController extends Controller
         $query = Employee::query();
 
         // create file name  
-        $fileName = "employee_export_" . date('Y-m-d_h:i_a') . ".xlsx";
+        $fileName = "employee_export_" . date('Y-m-d_h:i_a') . ".csv";
 
-        return (new EmployeeExport($query, $headers))->download($fileName);
+        return (new ExportsEmployeeExport($query, $headers))->download($fileName);
     }
 }

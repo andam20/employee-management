@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/employee-import', [EmployeeController::class, 'exportIntoExcel'])->name('employeeExport');
+
 Route::get('/', function () {
     return view('welcome');
 });
