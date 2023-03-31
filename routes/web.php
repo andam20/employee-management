@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FounderController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ManagerLineController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/employee-import', [EmployeeController::class, 'exportIntoExcel'])->name('employeeExport');
+Route::get('/employee-export', [EmployeeController::class, 'exportIntoExcel'])->name('employeeExport');
+Route::get('/manager-export', [ManagerController::class, 'exportIntoExcel'])->name('managerExport');
+Route::get('/manager-line-export', [ManagerLineController::class, 'exportIntoExcel'])->name('managerLineExport');
+Route::get('/founder-export', [FounderController::class, 'exportIntoExcel'])->name('founderExport');
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,10 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
 Route::resource("/employee", EmployeeController::class);
-// Route::delete('/employees/{employee}', [EmployeeController::class,'destroy'])->name('employees.destroy');
+Route::resource("/manager", ManagerController::class);
+Route::resource("/manager-line", ManagerLineController::class);
+Route::resource("/founder", FounderController::class);
 
 
 

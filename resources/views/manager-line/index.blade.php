@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
 
-    <a href="{{ route('employee.create') }}" class="m-2 btn btn-rounded btn-success waves-effect waves-light"><i
-            class="bx bx-plus font-size-16 me-2  align-middle"></i>Add Employee</a>
+    <a href="{{ route('manager-line.create') }}" class="m-2 btn btn-rounded btn-success waves-effect waves-light"><i
+            class="bx bx-plus font-size-16 me-2  align-middle"></i>Add Manager Line</a>
 
-    <a href="{{ route('employeeExport') }}"> <button class="btn btn-secondary buttons-excel buttons-html5"
+    <a href="{{ route('managerLineExport') }}"> <button class="btn btn-secondary buttons-excel buttons-html5"
             tabindex="0" aria-controls="example1" type="button"><span>Export</span></button></a>
 
     <table class="table mt-2">
@@ -18,75 +18,57 @@
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
                 <th scope="col">Salary</th>
-                <th scope="col">Job Title</th>
                 <th scope="col">Hired date</th>
-                <th scope="col">Managers</th>
                 <th scope="col">created At</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
 
-            @forelse ($employees as $employee)
+            @forelse ($manager_lines as $manager_line)
                 <tr>
                     <td scope="row">
                         {{ $loop->iteration }}
                     </td>
                     <td scope="row">
-                        {{ $employee->name }}
+                        {{ $manager_line->name }}
                     </td>
 
                     <td scope="row">
-                        {{ $employee->age }}
+                        {{ $manager_line->age }}
                     </td>
 
                     <td scope="row">
-                        {{ $employee->salary }}
+                        {{ $manager_line->salary }}
                     </td>
 
                     <td scope="row">
-                        {{ $employee->job_title }}
+                        {{ $manager_line->hired_date }}
                     </td>
 
                     <td scope="row">
-                        {{ $employee->hired_date }}
+                        {{ $manager_line->created_at }}
                     </td>
 
                     <td scope="row">
-                        {{ $employee->managers }}
-                    </td>
-                    <td scope="row">
-                        {{ $employee->created_at }}
-                    </td>
-
-                    <td scope="row">
-                        <a href="{{ route('employee.edit', $employee->id) }}"
+                        <a href="{{ route('manager-line.edit', $manager_line->id) }}"
                             class="m-2 btn btn-rounded btn-primary waves-effect waves-light">Edit</a>
 
-                        <a href="{{ route('employee.show', $employee->id) }}"
+                        <a href="{{ route('manager-line.show', $manager_line->id) }}"
                             class="m-2 btn btn-rounded btn-success waves-effect waves-light">show</a>
-
 
                         {{-- <form action="{{ route('employees.destroy', $employee->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form> --}}
-
-
-
                     </td>
-
                 </tr>
             @empty
-
                 <td scopt="row">
-                    {{ 'There Is No Employee' }}
+                    {{ 'There Is No manager Lines' }}
                 </td>
             @endforelse
-
-
-
         </tbody>
     </table>
 
