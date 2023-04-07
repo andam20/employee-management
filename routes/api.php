@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test',function (Request $request){
-return 'auth';
+Route::get('/test', function (Request $request) {
+    return 'auth';
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -23,4 +26,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+// Route::get('emp', function ($id) {
+//     return ["name"=>"adam"];
+// });
 
+
+Route::get('get', [EmployeeController::class, 'index_employee']);
+
+
+// Route::post('login', [ 'as' => 'login', 'uses' => 'AuthController@login']);
+Route::post("login",[AuthController::class,'login']);
