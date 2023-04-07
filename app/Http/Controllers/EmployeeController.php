@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Schema;
 class EmployeeController extends Controller
 {
 
-    public function index_employee(Request $request){
+    public function index_employee(Request $request)
+    {
 
-        $emps=Employee::all();
+        $emps = Employee::all();
         return response()->json([
-            'status'=> 200,
-            'message'=>'you did it',
-            'data'=>$emps
+            'status' => 200,
+            'message' => 'you did it',
+            'data' => $emps
         ]);
-        // return ["name"=>"andam"];
     }
 
     public function index(Request $request)
@@ -63,9 +63,9 @@ class EmployeeController extends Controller
     public function show(Request $request, $id)
     {
 
-       $employee=  Employee::whereId($id)->get();
+        $employee = Employee::whereId($id)->get();
 
-        return view('employee.show',compact('employee'));
+        return view('employee.show', compact('employee'));
     }
 
     public function edit(Employee $employee)
@@ -104,11 +104,11 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
 
-     // Find the employee by ID
-     $employee = Employee::find($id);
+        // Find the employee by ID
+        $employee = Employee::find($id);
 
-     // Delete the employee
-     $employee->delete();
+        // Delete the employee
+        $employee->delete();
         return redirect()->route('employee.index');
     }
 

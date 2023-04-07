@@ -12,19 +12,23 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $validatedData = $request->validate([
+        $fields = $request->validate([
             'name' => 'required|max:55',
             'email' => 'email|required|unique:users',
             'password' => 'required|confirmed'
         ]);
+        $user = User::create([
+            'name' => $fields['name'],
+            'email' => $fields['email'],
+            'password' => bcrypt($fields['password']),
+        ]);
 
-        $validatedData['password'] = Hash::make($request->password);
-
-        $user = User::create($validatedData);
-
-        $accessToken = $user->createToken('authToken')->accessToken;
-
-        return response(['user' => $user, 'access_token' => $accessToken]);
+        $accessToken = $user->createToken('myapptoken')->plainTextToken;
+        $response = [
+            'user' => $user,
+            'token' => $accessToken
+        ];
+        return response($response, 201);
     }
 
     public function login(Request $request)
@@ -34,31 +38,24 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $user=User::where('email', $fields['email'])->first();
-        if (!$user||!Hash::check($fields['password'],$user->password)){
+        $user = User::where('email', $fields['email'])->first();
+        if (!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
-                'message' =>'bad creds'
-            ],401);
+                'message' => 'bad creds'
+            ], 401);
         }
 
-        $token=$user->createToken('myapptoken')->plainTextToken;
-        $response=[
-            'user'=>$user,
-            'token'=>$token
+        $token = $user->createToken('myapptoken')->plainTextToken;
+        $response = [
+            'user' => $user,
+            'token' => $token
         ];
-
-        // if (!Auth::attempt($loginData)) {
-        //     return response(['message' => 'Invalid credentials']);
-        // }
-
-        // $accessToken = auth()->user()->createToken('authToken')->accessToken;
-
-        return response($response,201);
+        return response($response, 201);
     }
 
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
+        $request->user()->tokens()->delete();
 
         return response(['message' => 'You have been successfully logged out']);
     }

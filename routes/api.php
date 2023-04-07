@@ -17,22 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function (Request $request) {
-    return 'auth';
+
+//protected routes 
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::get('get', [EmployeeController::class, 'index_employee']);
+
+    Route::post("logout", [AuthController::class, 'logout']);
+
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
+//public route
+Route::post("login", [AuthController::class, 'login']);
+Route::post("register", [AuthController::class, 'register']);
 
-// Route::get('emp', function ($id) {
-//     return ["name"=>"adam"];
-// });
-
-
-Route::get('get', [EmployeeController::class, 'index_employee']);
-
-
-// Route::post('login', [ 'as' => 'login', 'uses' => 'AuthController@login']);
-Route::post("login",[AuthController::class,'login']);
