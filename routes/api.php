@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
-use App\Http\Controllers\APIEmployeeController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\UserController;
-use App\Models\Employee;
 use App\Models\Founder;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\APIEmployeeController;
+use Illuminate\Support\Facades\Response as ResponseFacade;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +27,17 @@ use Illuminate\Support\Facades\Route;
 //protected routes  
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::resource('employeeAPI', APIEmployeeController::class);
+    Route::resource('employees', APIEmployeeController::class);
 
     Route::get('/search', [APIEmployeeController::class, 'search']);
+
+    Route::get('/export', [APIEmployeeController::class, 'export']);
 
     Route::post("logout", [AuthController::class, 'logout']);
 
 });
+
+
 
 
 //public route

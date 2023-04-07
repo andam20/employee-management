@@ -115,6 +115,6 @@ class EmployeeController extends Controller
         // create file name  
         $fileName = "employee_export_" . date('Y-m-d_h:i_a') . ".csv";
 
-        return (new ExportsEmployeeExport($query, $headers))->download($fileName);
+        return (new \App\Exports\EmployeeExport($query, $headers))->download($fileName);
     }
 }
