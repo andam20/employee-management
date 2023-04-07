@@ -51,9 +51,9 @@ class EmployeeController extends Controller
     public function show(Request $request, $id)
     {
 
-       $employee=  Employee::whereId($id)->get();
+        $employee = Employee::whereId($id)->get();
 
-        return view('employee.show',compact('employee'));
+        return view('employee.show', compact('employee'));
     }
 
     public function edit(Employee $employee)
@@ -92,11 +92,11 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
 
-     // Find the employee by ID
-     $employee = Employee::find($id);
+        // Find the employee by ID
+        $employee = Employee::find($id);
 
-     // Delete the employee
-     $employee->delete();
+        // Delete the employee
+        $employee->delete();
         return redirect()->route('employee.index');
     }
 
@@ -115,6 +115,6 @@ class EmployeeController extends Controller
         // create file name  
         $fileName = "employee_export_" . date('Y-m-d_h:i_a') . ".csv";
 
-        return (new ExportsEmployeeExport($query, $headers))->download($fileName);
+        return (new \App\Exports\EmployeeExport($query, $headers))->download($fileName);
     }
 }
