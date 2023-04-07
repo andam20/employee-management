@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\APIEmployeeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
+use App\Models\Employee;
+use App\Models\Founder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//protected routes 
+//protected routes  
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::get('get', [EmployeeController::class, 'index_employee']);
+    Route::resource('employeeAPI', APIEmployeeController::class);
+
+    Route::get('/search', [APIEmployeeController::class, 'search']);
 
     Route::post("logout", [AuthController::class, 'logout']);
 
@@ -31,4 +36,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 //public route
 Route::post("login", [AuthController::class, 'login']);
 Route::post("register", [AuthController::class, 'register']);
-

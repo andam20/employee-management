@@ -11,18 +11,6 @@ use Illuminate\Support\Facades\Schema;
 
 class EmployeeController extends Controller
 {
-
-    public function index_employee(Request $request)
-    {
-
-        $emps = Employee::all();
-        return response()->json([
-            'status' => 200,
-            'message' => 'you did it',
-            'data' => $emps
-        ]);
-    }
-
     public function index(Request $request)
     {
 
