@@ -138,7 +138,7 @@ class APIEmployeeController extends Controller
             "Expires" => "0"
         );
 
-        $columns = array('name', 'age', 'salary', 'gender', 'hired date', 'job title', 'managers');
+        $columns = array('name', 'age', 'salary', 'gender', 'hired date', 'job title');
 
         $callback = function () use ($employees, $columns) {
             $file = fopen('php://output', 'w');
@@ -169,9 +169,7 @@ class APIEmployeeController extends Controller
     {
         $query = $request->input('q');
         $results = Employee::where(function ($q) use ($query) {
-            $q->where('name', 'LIKE', '%' . $query . '%')
-                ->orWhere('managers', 'LIKE', '%' . $query . '%');
-            // add more columns here as needed
+            $q->where('name', 'LIKE', '%' . $query . '%');
         })
             ->get();
 
