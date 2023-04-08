@@ -34,6 +34,21 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="row mb-4">
+                                    <label for="founder_id" class="col-sm-3 col-form-label">founder</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select2" id="founder_id" name="founder_id" required>
+                                            @foreach ($founder as $founders)
+                                                <option value="{{ $founders->id }}"
+                                                    {{ $founders->id == old('founder_id') ? 'selected' : '' }}>
+                                                    {{ $founders->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="row mb-4">
                                     <label for="age" class="col-sm-3 col-form-label">age</label>
                                     <div class="col-sm-9">

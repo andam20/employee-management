@@ -10,4 +10,9 @@ class Employee extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function managerLine()
+    {
+        return $this->belongsTo(ManagerLine::class);
+    }
+
 }

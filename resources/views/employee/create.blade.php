@@ -34,6 +34,21 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row mb-4">
+                                    <label for="manager_line_id" class="col-sm-3 col-form-label">manager line</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select2" id="manager_line_id" name="manager_line_id" required>
+                                            @foreach ($manager_lines as $manager_line)
+                                                <option value="{{ $manager_line->id }}"
+                                                    {{ $manager_line->id == old('manager_line') ? 'selected' : '' }}>
+                                                    {{ $manager_line->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+
                                 <div class="row mb-4">
                                     <label for="email" class="col-sm-3 col-form-label">email</label>
                                     <div class="col-sm-9">

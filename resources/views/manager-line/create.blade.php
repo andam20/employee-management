@@ -34,6 +34,21 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row mb-4">
+                                    <label for="manager_id" class="col-sm-3 col-form-label">manager</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select2" id="manager_id" name="manager_id" required>
+                                            @foreach ($managers as $manager)
+                                                <option value="{{ $manager->id }}"
+                                                    {{ $manager->id == old('manager_id') ? 'selected' : '' }}>
+                                                    {{ $manager->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+
                                 <div class="row mb-4">
                                     <label for="age" class="col-sm-3 col-form-label">age</label>
                                     <div class="col-sm-9">

@@ -16,6 +16,7 @@
             <tr class="bg-secondary">
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
+                <th scope="col">founder</th>
                 <th scope="col">Age</th>
                 <th scope="col">Salary</th>
                 <th scope="col">Hired date</th>
@@ -32,6 +33,10 @@
                     </td>
                     <td scope="row">
                         {{ $manager->name }}
+                    </td>
+
+                    <td scope="row">
+                        {{ $manager->founder->name }}
                     </td>
 
                     <td scope="row">

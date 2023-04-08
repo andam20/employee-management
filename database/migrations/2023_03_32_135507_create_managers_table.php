@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manager_lines', function (Blueprint $table) {
+        Schema::create('managers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('founder_id')->constrained("founders")->onUpdate("cascade")->onDelete("cascade");
             $table->integer('age');
             $table->enum("gender",["male","female"])->default('male');
             $table->integer('salary');
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('manager_lines');
+        Schema::dropIfExists('managers');
     }
 };

@@ -23,6 +23,7 @@ class EmployeeRequest extends FormRequest
     {
         return [
             "name" => ["required", "string"],
+            "manager_line_id" => ["required", "exists:manager_lines,id"],
             "email" => ["required"],
             "age" => ["required"],
             "gender" => ["required"],

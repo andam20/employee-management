@@ -10,4 +10,9 @@ class Founder extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function managers()
+    {
+        return $this->hasMany(Manager::class);
+    }
+
 }

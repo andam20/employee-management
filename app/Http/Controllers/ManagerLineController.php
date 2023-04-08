@@ -8,6 +8,7 @@ use App\Http\Requests\EmployeeExport;
 use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\ManagerLineRequest;
 use App\Models\Employee;
+use App\Models\Manager;
 use App\Models\ManagerLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +23,8 @@ class ManagerLineController extends Controller
 
     public function create()
     {
-        return view('manager-line.create');
+        $managers = Manager::select('name', 'id')->get();
+        return view('manager-line.create', compact('managers'));
     }
 
     public function store(ManagerLineRequest $request)
@@ -57,9 +59,10 @@ class ManagerLineController extends Controller
         return view('manager-line.show', compact('manager_line'));
     }
 
-    public function edit(ManagerLine $managerLine)
+    public function edit(ManagerLine $manager_line)
     {
-        return view('manager-line.edit', compact('managerLine'));
+        $managers = Manager::select('name', 'id')->get();
+        return view('manager-line.edit', compact('manager_line', 'managers'));
     }
 
 
@@ -94,7 +97,7 @@ class ManagerLineController extends Controller
     {
         // Find the employee by ID
         $manager_line = ManagerLine::find($id);
-        
+
         // Delete the employee
         $manager_line->delete();
         return redirect()->route('manager-line.index');

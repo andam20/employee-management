@@ -69,19 +69,19 @@
                                     </div>
 
                                     <div class="col-6">
-                                        <h6>managers</h6>
+                                        <h6>email</h6>
                                         <p class="text-muted">
                                             @foreach ($employee as $item)
-                                                {{ $item->managers }}
+                                                {{ $item->email }}
                                             @endforeach
                                         </p>
                                     </div>
 
                                     <div class="col-6">
-                                        <h6>email</h6>
+                                        <h6>managers</h6>
                                         <p class="text-muted">
-                                            @foreach ($employee as $item)
-                                                {{ $item->managers }}
+                                            @foreach ($managers as $item)
+                                                {{ $item->name }}
                                             @endforeach
                                         </p>
                                     </div>
