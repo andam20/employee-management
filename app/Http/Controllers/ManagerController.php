@@ -10,6 +10,7 @@ use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\ManagerLineRequest;
 use App\Http\Requests\ManagerRequest;
 use App\Models\Employee;
+use App\Models\Founder;
 use App\Models\Manager;
 use App\Models\ManagerLine;
 use Illuminate\Http\Request;
@@ -25,7 +26,8 @@ class ManagerController extends Controller
 
     public function create()
     {
-        return view('manager.create');
+        $founder=Founder::select('name','id')->get();
+        return view('manager.create',compact('founder'));
     }
 
     public function store(ManagerRequest $request)
@@ -56,13 +58,13 @@ class ManagerController extends Controller
     {
 
        $manager=  Manager::whereId($id)->get();
-
         return view('manager.show',compact('manager'));
     }
 
     public function edit(Manager $manager)
     {
-        return view('manager.edit', compact('manager'));
+        $founders=Founder::select('name','id')->get();
+        return view('manager.edit', compact('founders','manager'));
     }
 
 

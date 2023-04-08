@@ -10,6 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+                    <p class="" style="color: red">
+                        {{ __("1- first you have to have a founder if not you can't have a manager and also you have to have a manager to have a manager line and also you have to have manger line and then you can have an employee
+                                                                ") }}
+                    </p>
                 </div>
             </div>
         </div>

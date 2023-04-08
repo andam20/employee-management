@@ -10,4 +10,14 @@ class Manager extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function founder()
+    {
+        return $this->belongsTo(Founder::class);
+    }
+
+    public function managerLines()
+    {
+        return $this->hasMany(ManagerLine::class);
+    }
+
 }

@@ -23,6 +23,7 @@ class ManagerRequest extends FormRequest
     {
         return [
             "name" => ["required", "string"],
+            "founder_id" => ["required", "exists:founders,id"],
             "age" => ["required"],
             "gender" => ["required"],
             "salary" => ["required"],

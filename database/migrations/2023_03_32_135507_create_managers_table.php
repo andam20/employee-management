@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('managers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('founder_id')->constrained("founders")->onUpdate("cascade")->onDelete("cascade");
             $table->integer('age');
             $table->enum("gender",["male","female"])->default('male');
             $table->integer('salary');

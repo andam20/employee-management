@@ -7,6 +7,8 @@ use App\Exports\EmployeeExport as ExportsEmployeeExport;
 use App\Http\Requests\EmployeeExport;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
+use App\Models\Manager;
+use App\Models\ManagerLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -26,15 +28,18 @@ class EmployeeController extends Controller
 
     public function index(Request $request)
     {
+        $employee = Employee::with('managerLine.manager')->get();
+        // dd($employee);
 
         $employees = Employee::all();
 
-        return view('employee.index', compact('employees'));
+        return view('employee.index', compact('employees','employee'));
     }
 
     public function create()
     {
-        return view('employee.create');
+        $manager_lines = ManagerLine::select('name', 'id')->get();
+        return view('employee.create', compact('manager_lines'));
     }
 
     public function store(EmployeeRequest $request)
@@ -63,15 +68,17 @@ class EmployeeController extends Controller
 
     public function show(Request $request, $id)
     {
+        $employee = Employee::with('managerLine.manager.founder.managers')->find($id);
+        $managers = $employee->managerLine->manager->founder->managers;
 
         $employee = Employee::whereId($id)->get();
-
-        return view('employee.show', compact('employee'));
+        return view('employee.show', compact('employee', 'managers'));
     }
 
     public function edit(Employee $employee)
     {
-        return view('employee.edit', compact('employee'));
+        $manager_lines = ManagerLine::select('name', 'id')->get();
+        return view('employee.edit', compact('employee', 'manager_lines'));
     }
 
 

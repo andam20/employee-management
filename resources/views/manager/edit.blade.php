@@ -21,15 +21,15 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="needs-validation" novalidate action="{{ route('manager.update', $manager->id) }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate action="{{ route('manager.update', $manager->id) }}"
+                        method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col-8">
 
                                 <div class="row mb-4">
-                                    <label for="name" class="col-sm-3 col-form-label">{{'name'}}</label>
+                                    <label for="name" class="col-sm-3 col-form-label">{{ 'name' }}</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="name" name="name"
                                             value="{{ $manager->name }}" required>
@@ -40,7 +40,20 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <label for="age" class="col-sm-3 col-form-label">{{'age'}}</label>
+                                    <label for="founder_id" class="col-sm-3 col-form-label">{{ 'founder' }}</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select2" id="founder_id" name="founder_id" required>
+                                            @foreach ($founders as $founder)
+                                                <option value="{{ $founder->id }}"
+                                                    {{ $founder->id == old('founder_id') ? 'selected' : '' }}>
+                                                    {{ $founder->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <label for="age" class="col-sm-3 col-form-label">{{ 'age' }}</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="age" name="age"
                                             value="{{ $manager->age }}" required>
@@ -51,7 +64,7 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <label for="salary" class="col-sm-3 col-form-label">{{'Salary'}}</label>
+                                    <label for="salary" class="col-sm-3 col-form-label">{{ 'Salary' }}</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="salary" name="salary"
                                             value="{{ $manager->salary }}" required>
@@ -62,7 +75,7 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <label for="job_title" class="col-sm-3 col-form-label">{{'Hired Date'}}</label>
+                                    <label for="job_title" class="col-sm-3 col-form-label">{{ 'Hired Date' }}</label>
                                     <div class="col-sm-9">
                                         <input type="date" class="form-control" id="hired_date" name="hired_date"
                                             value="{{ $manager->hired_date }}" required>
@@ -90,7 +103,7 @@
                                 <div class="row justify-content-end">
                                     <div class="col-sm-9">
                                         <div>
-                                            <button class="btn btn-primary" type="submit">{{'submit'}}</button>
+                                            <button class="btn btn-primary" type="submit">{{ 'submit' }}</button>
                                         </div>
                                     </div>
                                 </div>
