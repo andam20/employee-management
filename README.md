@@ -165,3 +165,9 @@ cd laravel-project<br>
  <br>
 5-Once inside the project directory, run the composer install command to install all the required dependencies.<br>
 6-After the installation process is complete, you can configure the .env file and run the necessary database migrations to get the project up and running.<br>
+
+
+## alert
+<br>
+1-instead  of /employees/search?q=al just type /search?q=al
+
