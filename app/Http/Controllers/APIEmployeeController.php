@@ -8,12 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\EmployeeRequest;
 use Illuminate\Support\Facades\DB;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Formatter\LineFormatter;
 use League\Csv\CannotInsertRecord;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response as ResponseFacade;
 use Maatwebsite\Excel\Writer as ExcelWriter;
 // use League\Csv\Writer as CsvWriter; 
+use Illuminate\Support\Facades\Log;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\WriterPart;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -26,6 +30,13 @@ class APIEmployeeController extends Controller
     {
         return Employee::all();
     }
+
+    public function getLogsByDate($date)
+    {
+        $logs = Log::whereDate('created_at', $date)->get();
+        return response()->json(['logs' => $logs]);
+    }
+
 
     public function managers($id)
     {
