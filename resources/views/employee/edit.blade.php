@@ -40,6 +40,17 @@
                                 </div>
 
                                 <div class="row mb-4">
+                                    <label for="email" class="col-sm-3 col-form-label">{{'email'}}</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            value="{{ $employee->email }}" required>
+                                        <div class="valid-feedback">
+                                            @lang('validation.good')
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
                                     <label for="age" class="col-sm-3 col-form-label">{{'age'}}</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="age" name="age"

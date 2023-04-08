@@ -16,6 +16,7 @@
             <tr class="bg-secondary">
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
+                <th scope="col">email</th>
                 <th scope="col">Age</th>
                 <th scope="col">Salary</th>
                 <th scope="col">Job Title</th>
@@ -34,6 +35,10 @@
                     </td>
                     <td scope="row">
                         {{ $employee->name }}
+                    </td>
+
+                    <td scope="row">
+                        {{ $employee->email }}
                     </td>
 
                     <td scope="row">

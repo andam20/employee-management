@@ -77,6 +77,15 @@
                                         </p>
                                     </div>
 
+                                    <div class="col-6">
+                                        <h6>email</h6>
+                                        <p class="text-muted">
+                                            @foreach ($employee as $item)
+                                                {{ $item->managers }}
+                                            @endforeach
+                                        </p>
+                                    </div>
+
 
                                 </div>
                             </div>

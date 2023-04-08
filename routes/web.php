@@ -44,4 +44,4 @@ Route::resource("/founder", FounderController::class);
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
