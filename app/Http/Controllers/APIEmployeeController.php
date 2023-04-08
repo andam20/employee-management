@@ -55,7 +55,38 @@ class APIEmployeeController extends Controller
 
         return response()->json($data);
     }
-    
+
+    public function getEmployeeManagersSalary($id)
+    {
+        $employee = Employee::findOrFail($id);
+
+        $managerLine = $employee->managerLine;
+        $manager = $managerLine->manager;
+        $founder = $manager->founder;
+        $employees = $managerLine->employees;
+
+        $data = [
+            'managerLine' => [
+                'id' => $managerLine->id,
+                'name' => $managerLine->name,
+                'salary' => $managerLine->salary,
+            ],
+            'manager' => [
+                'id' => $manager->id,
+                'name' => $manager->name,
+                'salary' => $manager->salary,
+            ],
+            'founder' => [
+                'id' => $founder->id,
+                'name' => $founder->name,
+                'salary' => $founder->salary,
+
+            ],
+            'employees' => $employees->pluck('name')
+        ];
+
+        return response()->json($data);
+    }
 
 
     /**
@@ -107,7 +138,7 @@ class APIEmployeeController extends Controller
             "Expires" => "0"
         );
 
-        $columns = array('name', 'age', 'salary', 'gender','hired date', 'job title', 'managers');
+        $columns = array('name', 'age', 'salary', 'gender', 'hired date', 'job title', 'managers');
 
         $callback = function () use ($employees, $columns) {
             $file = fopen('php://output', 'w');
