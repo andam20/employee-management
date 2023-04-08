@@ -28,12 +28,12 @@ class EmployeeController extends Controller
 
     public function index(Request $request)
     {
-        $employee = Employee::with('managerLine.manager.founder.managers')->get();
-        $managers = $employee;
+        $employee = Employee::with('managerLine.manager')->get();
+        // dd($employee);
 
         $employees = Employee::all();
 
-        return view('employee.index', compact('employees','managers'));
+        return view('employee.index', compact('employees','employee'));
     }
 
     public function create()
@@ -70,8 +70,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::with('managerLine.manager.founder.managers')->find($id);
         $managers = $employee->managerLine->manager->founder->managers;
-
-
 
         $employee = Employee::whereId($id)->get();
         return view('employee.show', compact('employee', 'managers'));

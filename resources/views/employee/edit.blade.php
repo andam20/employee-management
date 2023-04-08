@@ -86,17 +86,6 @@
                                 </div>
 
                                 <div class="row mb-4">
-                                    <label for="managers" class="col-sm-3 col-form-label">{{'Managers'}}</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="managers" name="managers"
-                                            value="{{ $employee->managers }}" required>
-                                        <div class="valid-feedback">
-                                            @lang('validation.good')
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-4">
                                     <label for="job_title" class="col-sm-3 col-form-label">{{'Job Title'}}</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="job_title" name="job_title"

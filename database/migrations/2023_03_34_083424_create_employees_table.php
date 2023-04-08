@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('salary');
             $table->date('hired_date');
             $table->string('job_title');
-            $table->string('managers');
             $table->timestamps();
         });
     }

@@ -21,7 +21,6 @@
                 <th scope="col">Salary</th>
                 <th scope="col">Job Title</th>
                 <th scope="col">Hired date</th>
-                <th scope="col">Managers</th>
                 <th scope="col">created At</th>
                 <th scope="col">Action</th>
             </tr>
@@ -57,9 +56,6 @@
                         {{ $employee->hired_date }}
                     </td>
 
-                    <td scope="row">
-                        {{ $employee->managers }}
-                    </td>
                     <td scope="row">
                         {{ $employee->created_at }}
                     </td>

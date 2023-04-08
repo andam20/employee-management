@@ -78,7 +78,7 @@
                                     </div>
 
                                     <div class="col-6">
-                                        <h6>managers</h6>
+                                        <h6>manager</h6>
                                         <p class="text-muted">
                                             @foreach ($managers as $item)
                                                 {{ $item->name }}

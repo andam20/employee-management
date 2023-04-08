@@ -30,7 +30,6 @@ class EmployeeRequest extends FormRequest
             "salary" => ["required"],
             "job_title" => ["required","string"],
             "hired_date" => ["required"],
-            "managers" => ["required"],
         ];
     }
 }

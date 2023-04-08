@@ -111,16 +111,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-4">
-                                    <label for="managers" class="col-sm-3 col-form-label">managers</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="managers" name="managers"
-                                            value="{{ old('managers') }}" required>
-                                        <div class="valid-feedback">
-                                            @lang('validation.good')
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="row justify-content-end">
                                     <div class="col-sm-9">
                                         <div>
