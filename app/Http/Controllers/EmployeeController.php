@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EmployeeSalaryUpdated;
 use App\Exports\EmployeeExport as ExportsEmployeeExport;
 use App\Http\Requests\EmployeeExport;
 use App\Http\Requests\EmployeeRequest;
@@ -11,6 +12,18 @@ use Illuminate\Support\Facades\Schema;
 
 class EmployeeController extends Controller
 {
+
+    public function updateSalary(Request $request, $employeeId)
+    {
+        $employee = Employee::find($employeeId);
+        $employee->salary = $request->input('salary');
+        $employee->save();
+
+        event(new EmployeeSalaryUpdated($employee));
+
+        return redirect()->back();
+    }
+
     public function index(Request $request)
     {
 

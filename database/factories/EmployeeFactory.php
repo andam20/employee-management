@@ -18,6 +18,7 @@ class EmployeeFactory extends Factory
     {
         return [    
             'name'=> $this->faker->word(),
+            'email'=> $this->faker->email(),
             'age'=> $this->faker->numberBetween(5,70),
             'salary'=> $this->faker->numberBetween(500,1000),
             'hired_date' =>  $this->faker->date(),
