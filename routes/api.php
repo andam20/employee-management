@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('employees/{id}/managers', [APIEmployeeController::class,'managers']);
 
+    Route::get('employees/{id}/managers-salary', [APIEmployeeController::class,'getEmployeeManagersSalary']);
+
+
     Route::get('/export', [APIEmployeeController::class, 'export']);
 
     Route::post("logout", [AuthController::class, 'logout']);
