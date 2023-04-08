@@ -27,6 +27,36 @@ class APIEmployeeController extends Controller
         return Employee::all();
     }
 
+    public function managers($id)
+    {
+
+        $employee = Employee::findOrFail($id);
+
+        $managerLine = $employee->managerLine;
+        $manager = $managerLine->manager;
+        $founder = $manager->founder;
+        $employees = $managerLine->employees;
+
+        $data = [
+            'managerLine' => [
+                'id' => $managerLine->id,
+                'name' => $managerLine->name
+            ],
+            'manager' => [
+                'id' => $manager->id,
+                'name' => $manager->name
+            ],
+            'founder' => [
+                'id' => $founder->id,
+                'name' => $founder->name
+            ],
+            'employees' => $employees->pluck('name')
+        ];
+
+        return response()->json($data);
+    }
+    
+
 
     /**
      * Store a newly created resource in storage.
