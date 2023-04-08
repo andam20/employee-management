@@ -16,7 +16,7 @@ class EmployeeFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        return [    
             'name'=> $this->faker->word(),
             'age'=> $this->faker->numberBetween(5,70),
             'salary'=> $this->faker->numberBetween(500,1000),
