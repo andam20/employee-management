@@ -777,6 +777,89 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "log of that date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4|TEz6srW7wi73WJG8vMpGNZCaU2UBhmK0lIGIVmq8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "andam",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "124",
+							"type": "text"
+						},
+						{
+							"key": "job_title",
+							"value": "student",
+							"type": "text"
+						},
+						{
+							"key": "hired_date",
+							"value": "2023-02-01",
+							"type": "text"
+						},
+						{
+							"key": "managers",
+							"value": "adamadamxdrqasm",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/2022-01-01/logs",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"2022-01-01",
+						"logs"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
