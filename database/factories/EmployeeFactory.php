@@ -24,7 +24,6 @@ class EmployeeFactory extends Factory
             'age'=> $this->faker->numberBetween(5,70),
             'salary'=> $this->faker->numberBetween(500,1000),
             'hired_date' =>  $this->faker->date(),
-            'managers' => $this->faker->word(),
             'job_title' => $this->faker->word(),
             'gender' => $this->faker->randomElement(["male","female"]),
         ];
