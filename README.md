@@ -66,65 +66,66 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
-additional info for the documentation:
-for Create a custom command to export database : php artisan export:alldb:csv
-that will save the file in the storage/app/backup/backup_
+## my additional steps
+additional info for the documentation:<br>
+for Create a custom command to export database : php artisan export:alldb:csv<br>
+that will save the file in the storage/app/backup/backup_<br>
+<br>
+and <br>
+for Create a custom command to remove log files: php artisan logs:clear<br>
+and <br>
+for Create a custom command to export all employees to a json file: php artisan employees:export<br>
+that will save the file in the storage/app/exports/employees_<br>
+<br>
+and <br>
+for  Create a custom command to insert 1000 rows of fake data into employees table: php artisan employees:fake<br>
+<br>
+and <br>
+for Logs older than 1 month in database should be deleted automatically: php artisan make:command DeleteOldLogs<br>
+<br>
+and also for Listing steps to deploy the System with Nginx and adding TLS : <br>
+1-Install Nginx, PHP, MySQL, and other required packages on your server:<br>
+sudo apt-get update<br><br>
+sudo apt-get install nginx php-fpm php-mysql php-mbstring php-xml mysql-server<br>
+<br>
+2-Create a new MySQL database and user for your Laravel project:mysql -u root -p<br>
+CREATE DATABASE <database-name>;<br>
+CREATE USER '<employee-management>'@'localhost' IDENTIFIED BY '<123456>';<br>
+GRANT ALL PRIVILEGES ON <database-name>.* TO '<employee-management>'@'localhost';<br>
+FLUSH PRIVILEGES;<br>
+EXIT;<br>
+    <br><br>
 
-and 
-for Create a custom command to remove log files: php artisan logs:clear
-and 
-for Create a custom command to export all employees to a json file: php artisan employees:export
-that will save the file in the storage/app/exports/employees_
+3-Clone your Laravel project from a Git repository:<br>
+git clone <https://github.com/andam20/employee-management> <project-directory><br>
+<br><br>
 
-and 
-for  Create a custom command to insert 1000 rows of fake data into employees table: php artisan employees:fake
+4-Install the project dependencies using Composer:<br>
+cd <project-management><br>
+composer install<br>
 
-and 
-for Logs older than 1 month in database should be deleted automatically: php artisan make:command DeleteOldLogs
-
-and also for Listing steps to deploy the System with Nginx and adding TLS : 
-1-Install Nginx, PHP, MySQL, and other required packages on your server:
-sudo apt-get update
-sudo apt-get install nginx php-fpm php-mysql php-mbstring php-xml mysql-server
-
-2-Create a new MySQL database and user for your Laravel project:mysql -u root -p
-CREATE DATABASE <database-name>;
-CREATE USER '<employee-management>'@'localhost' IDENTIFIED BY '<123456>';
-GRANT ALL PRIVILEGES ON <database-name>.* TO '<employee-management>'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-
-
-3-Clone your Laravel project from a Git repository:
-git clone <https://github.com/andam20/employee-management> <project-directory>
-
-
-4-Install the project dependencies using Composer:
-cd <project-management>
-composer install
-
-5-Copy the .env.example file to .env and update the database configuration with your MySQL database details:
-cp .env.example .env
-nano .env
-
-6-Update the following lines with appropriate values:
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=<employee-management>
-DB_USERNAME=<employee-management>
-DB_PASSWORD=<123456>
-
-7-Generate a new application key:
-php artisan key:generate
-
-8-Migrate the database schema:
-php artisan migrate
-
-9-Create a new Nginx server block for your Laravel project:
-sudo nano /etc/nginx/sites-available/<employee-management>
-
-10-Add the following configuration to the file:
+5-Copy the .env.example file to .env and update the database configuration with your MySQL database details:<br>
+cp .env.example .env<br>
+nano .env<br>
+<br>
+6-Update the following lines with appropriate values:<br>
+DB_CONNECTION=mysql<br>
+DB_HOST=127.0.0.1<br>
+DB_PORT=3306<br>
+DB_DATABASE=<employee-management><br>
+DB_USERNAME=<employee-management><br>
+DB_PASSWORD=<123456><br>
+<br>
+7-Generate a new application key:<br>
+php artisan key:generate<br>
+<br>
+8-Migrate the database schema:<br>
+php artisan migrate<br>
+<br>
+9-Create a new Nginx server block for your Laravel project:<br>
+sudo nano /etc/nginx/sites-available/<employee-management><br>
+<br>
+10-Add the following configuration to the file:<br>
 server {
     listen 80;
     server_name employee.managemenet.com;
@@ -143,32 +144,24 @@ server {
         include fastcgi_params;
     }
 }
+<br><br>
+11-Create a symbolic link for the Nginx server block:<br>
+sudo ln -s /etc/nginx/sites-available/<employee-management> /etc/nginx/sites-enabled/<br>
+<br>
+12-Test the Nginx configuration and restart the Nginx service:<br>
+sudo nginx -t<br>
+sudo systemctl restart nginx<br>
+<br>
 
-11-Create a symbolic link for the Nginx server block:
-sudo ln -s /etc/nginx/sites-available/<employee-management> /etc/nginx/sites-enabled/
-
-12-Test the Nginx configuration and restart the Nginx service:
-sudo nginx -t
-sudo systemctl restart nginx
-
-
-
-
-
-
-and also for cloning a laravel project from the github you can do this steps:
-1-First, you need to have Git installed on your local machine
-2-Next, go to the GitHub repository page where the Laravel project is hosted and copy the URL of the repository.
-3-Open your terminal or command prompt and navigate to the directory where you want to clone the project.
-4-After the cloning process is complete, navigate into the cloned project directory using the cd command. For example, if the project directory is named "laravel-project", you can navigate to it by running:
-
-git clone "the link of the project"
-cd laravel-project
- 
-5-Once inside the project directory, run the composer install command to install all the required dependencies.
-6-After the installation process is complete, you can configure the .env file and run the necessary database migrations to get the project up and running.
-
-
-
-
-
+<br><br><br><br><br>
+and also for cloning a laravel project from the github you can do this steps:<br>
+1-First, you need to have Git installed on your local machine<br>
+2-Next, go to the GitHub repository page where the Laravel project is hosted and copy the URL of the repository.<br>
+3-Open your terminal or command prompt and navigate to the directory where you want to clone the project.<br>
+4-After the cloning process is complete, navigate into the cloned project directory using the cd command. For example, if the project directory is named "laravel-project", you can navigate to it by running:<br>
+<br>
+git clone "the link of the project"<br>
+cd laravel-project<br>
+ <br>
+5-Once inside the project directory, run the composer install command to install all the required dependencies.<br>
+6-After the installation process is complete, you can configure the .env file and run the necessary database migrations to get the project up and running.<br>
