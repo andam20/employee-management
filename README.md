@@ -170,4 +170,4 @@ cd laravel-project<br>
 ## alert
 <br>
 1-instead  of /employees/search?q=al just type /search?q=al
-
+2- for exporting employee in the postman you have to save&download instead just save
